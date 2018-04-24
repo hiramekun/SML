@@ -1,0 +1,64 @@
+---
+title: "exponential_distribution"
+author: "takaaki hirano"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 配列生成
+xを0~0.5の部分を10000個に分割し、近似値を求めます。
+```{r}
+par(mfrow=c(1,1)) 
+func.t = function(lam, t) {
+  return(lam * exp(-lam * t))
+}
+
+func.t.sum = function(lam, t) {
+  return(lam^length(t) * exp(-lam * sum(t)))
+}
+
+ts = c(500, 650, 1800, 170, 1300, 960, 1100, 350, 2200, 800)
+ts = ts/100
+
+y = c()
+x = seq(0, 0.5, length=10000)
+for (i in x)
+  y = append(y, func.t.sum(i, ts))
+
+```
+## 評価
+最大値と、最大値を取るxが先頭から何番目かを出力しています。
+```{r}
+max(y)
+which.max(y)
+```
+### 最大値を取るxの近似値
+```{r}
+x[which.max(y)]
+```
+### 最大値をとるラムダの理論値
+```{r}
+1/mean(ts)
+```
+## グラフの描画
+小数点の問題から、
+縦軸はf(t)の-100乗。
+横軸はラムダの1/100の値にしています。
+```{r, echo=FALSE}
+plot(x, y, type="l", xlab = "lambda/100", ylab = "f(t)^(-100)")
+```
+
+## 以上より、λの答え
+### 理論値
+```{r}
+1/mean(ts) * 100
+```
+### 近似値 
+```{r}
+x[which.max(y)] * 100
+```
