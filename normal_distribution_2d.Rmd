@@ -1,6 +1,6 @@
 ---
 title: "normal_distribution_2d"
-output: html_document
+output: html_notebook
 author: takaaki hirano
 ---
 
