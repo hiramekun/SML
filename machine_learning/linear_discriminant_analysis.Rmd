@@ -87,28 +87,53 @@ plot_graph = function(a, b) {
 }
 library(mvtnorm)
 
-rand1 = rmvnorm(n = n1, mean = c(0, 2), sigma)
-rand2 = rmvnorm(n = n2, mean = c(0, -2), sigma)
+rand1 = rmvnorm(n = n1, mean = c(2, 0), sigma)
+rand2 = rmvnorm(n = n2, mean = c(-2, 0), sigma)
 plot_graph(a, b)
 ```
-### 傾きを変えてみる
+### パラメータ
+```{r}
+a
+```
+```{r}
+b
+```
+## 傾き変える①
 ```{r}
 beta = - pi / 4
 sigma = get_sigma(beta)
 
-rand1 = rmvnorm(n = n1, mean = c(0, 2), sigma)
-rand2 = rmvnorm(n = n2, mean = c(0, -2), sigma)
+rand1 = rmvnorm(n = n1, mean = c(2, 0), sigma)
+rand2 = rmvnorm(n = n2, mean = c(-2, 0), sigma)
 a = get_a()
 b = get_b()
 plot_graph(a, b)
 ```
 
-## 決定境界のパラメータ
-直線の傾きを決めるパラメータ
+### パラメータ
 ```{r}
 a
 ```
-定数項を決めるパラメータ
+```{r}
+b
+```
+
+## 傾き変える②
+```{r}
+beta = 0
+sigma = get_sigma(beta)
+
+rand1 = rmvnorm(n = n1, mean = c(2, 0), sigma)
+rand2 = rmvnorm(n = n2, mean = c(-2, 0), sigma)
+a = get_a()
+b = get_b()
+plot_graph(a, b)
+```
+
+### パラメータ
+```{r}
+a
+```
 ```{r}
 b
 ```
