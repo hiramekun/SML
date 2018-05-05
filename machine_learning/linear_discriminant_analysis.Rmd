@@ -9,12 +9,14 @@ author: Takaaki Hirano
 ## 定数の宣言
 ```{r}
 beta = pi / 4
-sigma = matrix(c(
-  sd1,
+get_sigma = function(beta) {
+ matrix(c(
+  9 - 8 * cos(beta)^2,
   8 * cos(beta) * sin(beta),
   8 * cos(beta) * sin(beta),
-  sd2
-), ncol = 2)
+  9 - 8 * sin(beta)^2
+  ), ncol = 2)
+}
 
 mu1 = c(2, 0)
 mu2 = c(-2, 0)
@@ -27,10 +29,14 @@ n2 = n - n1
 
 ## 線形判別器
 ```{r}
-a = solve(sigma) %*% (mu1 - mu2)
-b = -1 / 2 * (t(mu1) %*% solve(sigma) %*% mu1 - t(mu2) %*% solve(sigma) %*% mu2) + log(n1 /
-                                                                                         n2)
-linear = function(x) {
+sigma = get_sigma(beta)
+get_a = function() solve(sigma) %*% (mu1-mu2)
+get_b = function() -1 / 2 * (t(mu1) %*% solve(sigma) %*% mu1 - t(mu2) %*% solve(sigma) %*% mu2) + log(n1 / n2)
+
+a = get_a()
+b = get_b()
+                   
+linear = function(x, a, b) {
   if (a[2] == 0) {
     rep(0, length(x))
   } else {
@@ -41,50 +47,60 @@ linear = function(x) {
 
 ## 決定境界の描画
 ```{r}
-plot_graph = function() {
-  
+plot_graph = function(a, b) {
+  plot(
+    rand1[, 1],
+    rand1[, 2],
+    xlab = "x",
+    ylab = "y",
+    xlim = c(-10, 10),
+    ylim = c(-10, 10),
+    col = "blue",
+    pch = 20
+  )
+  par(new = T)
+  plot(
+    rand2[, 1],
+    rand2[, 2],
+    xlab = "x",
+    ylab = "y",
+    xlim = c(-10, 10),
+    ylim = c(-10, 10),
+    col = "red",
+    pch = 20
+  )
+    
+  par(new = T)
+  if (a[2] == 0) {
+    abline(v = 0)
+  } else {
+    plot(
+      -10:10,
+      linear(-10:10, a, b),
+      xlab = "x",
+      ylab = "y",
+      xlim = c(-10, 10),
+      ylim = c(-10, 10),
+      type = "l"
+    )
+  }
 }
 library(mvtnorm)
 
 rand1 = rmvnorm(n = n1, mean = c(0, 2), sigma)
 rand2 = rmvnorm(n = n2, mean = c(0, -2), sigma)
+plot_graph(a, b)
+```
+### 傾きを変えてみる
+```{r}
+beta = - pi / 4
+sigma = get_sigma(beta)
 
-plot(
-  rand1[, 1],
-  rand1[, 2],
-  xlab = "x",
-  ylab = "y",
-  xlim = c(-10, 10),
-  ylim = c(-10, 10),
-  col = "blue",
-  pch = 20
-)
-par(new = T)
-plot(
-  rand2[, 1],
-  rand2[, 2],
-  xlab = "x",
-  ylab = "y",
-  xlim = c(-10, 10),
-  ylim = c(-10, 10),
-  col = "red",
-  pch = 20
-)
-
-par(new = T)
-if (a[2] == 0) {
-  abline(v = 0)
-} else{
-  plot(
-    -10:10,
-    linear(-10:10),
-    xlab = "x",
-    ylab = "y",
-    xlim = c(-10, 10),
-    ylim = c(-10, 10),
-    type = "l"
-  )
-}
+rand1 = rmvnorm(n = n1, mean = c(0, 2), sigma)
+rand2 = rmvnorm(n = n2, mean = c(0, -2), sigma)
+a = get_a()
+b = get_b()
+plot_graph(a, b)
 ```
 
 ## 決定境界のパラメータ
