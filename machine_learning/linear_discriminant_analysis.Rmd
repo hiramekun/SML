@@ -41,6 +41,9 @@ linear = function(x) {
 
 ## 決定境界の描画
 ```{r}
+plot_graph = function() {
+  
+}
 library(mvtnorm)
 
 rand1 = rmvnorm(n = n1, mean = c(0, 2), sigma)
@@ -82,4 +85,14 @@ if (a[2] == 0) {
     type = "l"
   )
 }
+```
+
+## 決定境界のパラメータ
+直線の傾きを決めるパラメータ
+```{r}
+a
+```
+定数項を決めるパラメータ
+```{r}
+b
 ```
