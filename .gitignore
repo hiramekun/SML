@@ -5,7 +5,7 @@
 *.html
 *.pdf
 *.csv
-*.data
+*.data*
 *.zip
 *.png
 *.tex
