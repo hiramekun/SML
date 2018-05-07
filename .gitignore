@@ -1,0 +1,17 @@
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
+*.html
+*.pdf
+*.csv
+*.data
+*.zip
+*.png
+*.tex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.Rproj
