@@ -1,4 +1,4 @@
-# RPrograms
+# SML
 R/Pythonを用いた統計/機械学習のプログラムをまとめます
 
 **exponential_distrimution**  
