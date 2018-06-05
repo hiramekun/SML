@@ -1,5 +1,5 @@
 # RPrograms
-Rを用いた統計/機械学習のプログラムをまとめます
+R/Pythonを用いた統計/機械学習のプログラムをまとめます
 
 **exponential_distrimution**  
  - 指数分布のパラメータ最尤推定
