@@ -1,6 +1,16 @@
 # SML
 R/Pythonを用いた統計/機械学習のプログラムをまとめます
 
+## 目次
+ - [ベイズ関連](https://github.com/hiramekun/SML#%E3%83%99%E3%82%A4%E3%82%BA%E9%96%A2%E9%80%A3)
+ - [二項分布](https://github.com/hiramekun/SML#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83)
+ - [指数分布](https://github.com/hiramekun/SML#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83)
+ - [機械学習一般](https://github.com/hiramekun/SML#%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E4%B8%80%E8%88%AC)
+ - [ノンパラメトリック法](https://github.com/hiramekun/SML#%E3%83%8E%E3%83%B3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E6%B3%95)
+ - [正規分布関連](https://github.com/hiramekun/SML#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E9%96%A2%E9%80%A3)
+ - [回帰分析](https://github.com/hiramekun/SML#%E5%9B%9E%E5%B8%B0%E5%88%86%E6%9E%90)
+
+
 ## ベイズ関連
  - [ベイズ回帰モデル](https://github.com/hiramekun/SML/blob/master/bayesian/bayesian_regression.ipynb)  
  ![](https://i.imgur.com/n6X4xsQ.png)
