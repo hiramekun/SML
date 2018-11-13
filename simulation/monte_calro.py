@@ -1,5 +1,7 @@
 import numpy as np
 
+N_REPEAT = 100000
+
 
 def is_ended(board, flag):
     if board[0, 0] == flag:
@@ -25,9 +27,6 @@ def is_ended(board, flag):
             return True
 
     return False
-
-
-N_REPEAT = 100000
 
 
 def do_game():
