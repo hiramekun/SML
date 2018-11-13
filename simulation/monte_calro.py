@@ -65,6 +65,10 @@ def do_game():
     print()
     print(f'先手の勝つ確率: {win_a / N_REPEAT}')
     print(f'後手の勝つ確率: {win_b / N_REPEAT}')
+    std_a = np.std(np.hstack([np.repeat(1, win_a), np.repeat(0, N_REPEAT - win_a)]), ddof=1) / N_REPEAT ** (1 / 2)
+    std_b = np.std(np.hstack([np.repeat(1, win_b), np.repeat(0, N_REPEAT - win_b)]), ddof=1) / N_REPEAT ** (1 / 2)
+    print(f'先手の勝つ確率の標準誤差: {std_a}')
+    print(f'後手の勝つ確率の標準誤差: {std_b}')
 
 
 if __name__ == '__main__':
