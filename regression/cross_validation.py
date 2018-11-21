@@ -14,24 +14,11 @@ class GaussianKernelModel:
 
     def fit(self, X, Y):
         self.train_x = X
-        K = np.zeros((len(X), len(X)))
-        for i in range(len(X)):
-            for j in range(len(X)):
-                K[i][j] = self._gaussian_kernel(X[i], X[j])
-        #         K = np.array([self._gaussian_kernel(X[i], X) for i in range(len(X))])
+        K = np.array([self._gaussian_kernel(X[i], X) for i in range(len(X))])
         self.theta = self._calc_theta(K, Y)
 
     def predict(self, x):
-        ans = []
-        for i in range(len(x)):
-            temp = []
-            for j in range(len(self.train_x)):
-                temp.append(self._gaussian_kernel(x[i], self.train_x[j]))
-
-            ans.append(self.theta.dot(temp))
-        return ans
-
-    #         return np.array([self.theta.dot(self._gaussian_kernel(x[i], self.train_x)) for i in range(len(x))])
+        return np.array([self.theta.dot(self._gaussian_kernel(x[i], self.train_x)) for i in range(len(x))])
 
     def _gaussian_kernel(self, xi, xj):
         return np.exp(-((xi - xj) ** 2) / (2 * (self.b_width ** 2)))
