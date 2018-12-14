@@ -5,7 +5,7 @@ import numpy as np
 # %matplotlib inline
 
 
-class Eular:
+class Euler:
     def __init__(self, l, dt):
         self.l = l
         self.dt = dt
@@ -14,7 +14,7 @@ class Eular:
         return u + self.dt * self.l.dot(u)
 
 
-class BackwardEular:
+class BackwardEuler:
     def __init__(self, l, dt):
         self.l = l
         self.dt = dt
@@ -55,56 +55,56 @@ if __name__ == '__main__':
     axes = []
     dt = 0.1
     fig = plt.figure(figsize=(20, 12))
-    errs_eular = []
+    errs_euler = []
     errs_backward = []
     errs_crank = []
-    ts_eular = []
+    ts_euler = []
     ts_barkward = []
     ts_crank = []
     for i in range(1, graph_count + 1):
         dt /= 4
         axes.append(fig.add_subplot(rows_count, columns_count, i))
-        eular = Eular(l, dt)
-        backwardEular = BackwardEular(l, dt)
+        euler = Euler(l, dt)
+        backwardEuler = BackwardEuler(l, dt)
         crankNicholson = CrankNicholson(l, dt)
         x_end = 0.01
         n_step = max(10, int(x_end / dt))
-        ans_eular, t_eular = simulate(eular, u, n_step)
-        ans_backward, t_backward = simulate(backwardEular, u, n_step)
+        ans_euler, t_euler = simulate(euler, u, n_step)
+        ans_backward, t_backward = simulate(backwardEuler, u, n_step)
         ans_crank, t_crank = simulate(crankNicholson, u, n_step)
 
         X = np.linspace(0, x_end, n_step + 1)
         ans_correct_u = [2 * np.exp(-x) - np.exp(-1000 * x) for x in X]
         ans_correct_v = [-np.exp(-x) + np.exp(-1000 * x) for x in X]
-        err_eular = (np.linalg.norm(ans_eular[:, 0] - ans_correct_u) + np.linalg.norm(
-            ans_eular[:, 1] - ans_correct_v)) / (len(X))
+        err_euler = (np.linalg.norm(ans_euler[:, 0] - ans_correct_u) + np.linalg.norm(
+            ans_euler[:, 1] - ans_correct_v)) / (len(X))
         err_backward = (np.linalg.norm(ans_backward[:, 0] - ans_correct_u) + np.linalg.norm(
             ans_backward[:, 1] - ans_correct_v)) / len(X)
         err_crank = (np.linalg.norm(ans_crank[:, 0] - ans_correct_u) + np.linalg.norm(
             ans_crank[:, 1] - ans_correct_v)) / (len(X))
 
-        errs_eular.append(err_eular)
+        errs_euler.append(err_euler)
         errs_backward.append(err_backward)
         errs_crank.append(err_crank)
-        ts_eular.append(t_eular)
+        ts_euler.append(t_euler)
         ts_barkward.append(t_backward)
         ts_crank.append(t_crank)
         print('=================================')
         print(f'dt: {dt}')
-        print(f'err_eular: {err_eular}')
-        print(f'err_backward_eular: {err_backward}')
+        print(f'err_euler: {err_euler}')
+        print(f'err_backward_euler: {err_backward}')
         print(f'err_crank_nicholson: {err_crank}\n')
 
-        print(f'time_eular: {t_eular}')
-        print(f'time_backward_eular: {t_backward}')
+        print(f'time_euler: {t_euler}')
+        print(f'time_backward_euler: {t_backward}')
         print(f'time_crank_nicholson: {t_crank}\n')
 
         axes[i - 1].annotate(f'dt: {dt}', xy=(0.5, 0.7), fontsize=16, xycoords='axes fraction',
                              horizontalalignment='center')
-        axes[i - 1].plot(X, ans_eular[:, 0], label='u_eular')
+        axes[i - 1].plot(X, ans_euler[:, 0], label='u_euler')
         axes[i - 1].plot(X, ans_backward[:, 0], label='u_backward')
         axes[i - 1].plot(X, ans_crank[:, 0], label='u_crank')
-        axes[i - 1].plot(X, ans_eular[:, 1], label='v_eular')
+        axes[i - 1].plot(X, ans_euler[:, 1], label='v_euler')
         axes[i - 1].plot(X, ans_backward[:, 1], label='v_backward')
         axes[i - 1].plot(X, ans_crank[:, 1], label='v_crank')
         plt.legend()
