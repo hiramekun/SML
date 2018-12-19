@@ -24,8 +24,8 @@ if __name__ == '__main__':
     x = np.array([0, 0, 0])
     b = np.array([17, 11, 16])
     cg = CGMethod(A, b, x, 10 ** (-8))
-    x, ended = cg.step(x)
-    print(x)
+    ended = False
+
     while not ended:
         x, ended = cg.step(x)
         print(x)
