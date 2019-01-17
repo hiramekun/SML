@@ -41,19 +41,26 @@ def two_fact_minima(x):
 
 
 def update_x(x, x_rand):
-    return x + random.uniform(-1, 1) * x_rand
+    ret = np.zeros_like(x)
+    for i in range(len(ret)):
+        ret[i] = x[i] + random.uniform(-1, 1) * x_rand[i]
+    return ret
 
 
 def do_simulate(f, x_min, x_max):
     N = 100
-    T = 100
+    T = 1000
     X = np.array([[random.uniform(x_min, x_max), random.uniform(x_min, x_max)] for _ in range(N)],
                  dtype="float64")
 
     C = np.zeros(N, dtype="int")
     score = np.array([f(x) for x in X])
-    threshold = 10
+    threshold = 100
     fig = plt.figure(figsize=(25, 4))
+
+    global_best = min(score)
+    global_best_x = copy.deepcopy(X[score.argmin()])
+    global_bests = [global_best]
     for t in range(T):
         for i in range(N):
             X_temp = update_x(X[i], random.choice(X))
@@ -75,8 +82,12 @@ def do_simulate(f, x_min, x_max):
 
         for i in range(N):
             if C[i] > threshold:
-                X[i] = copy.deepcopy(random.choice(X))
+                X[i] = [random.uniform(x_min, x_max), random.uniform(x_min, x_max)]
 
+        global_bests.append(min(score))
+        if min(score) < global_best:
+            global_best = min(score)
+            global_best_x = copy.deepcopy(X[score.argmin()])
         if t % int(T / 5) == 0:
             ax = fig.add_subplot(151 + t / int(T / 5), projection='3d')
             ax.set_xlim(x_min, x_max)
@@ -84,3 +95,13 @@ def do_simulate(f, x_min, x_max):
             z = [f(x) for x in X]
             ax.set_zlim(min((min(z), 0)), max((max(z), 1.0)))
             ax.scatter(X[:, 0], X[:, 1], z)
+
+    fig = plt.figure()
+    plt.yscale("log")
+    global_bests = np.array(global_bests)
+    if global_best < 0:
+        plt.plot(-global_bests)
+    else:
+        plt.plot(global_bests)
+    print(f'最小値: {global_best}')
+    print(f'最小値を取る(x, y): {global_best_x}')
