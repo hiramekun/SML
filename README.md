@@ -11,11 +11,8 @@ R/Pythonを用いた統計/機械学習のプログラムをまとめる．
 
 
 ## ベイズ関連
- - [ベイズ回帰モデル](https://github.com/hiramekun/SML/blob/master/bayesian/bayesian_regression.ipynb)  
- <img src="https://i.imgur.com/n6X4xsQ.png" width=30%>
- 
- - [変分推定](https://github.com/hiramekun/SML/blob/master/bayesian/variational_method.ipynb)  
- <img src="https://i.imgur.com/wS75dc9.png" width=30%>
+ - [ベイズ回帰モデル](https://github.com/hiramekun/SML/blob/master/bayesian/bayesian_regression.ipynb), [変分推定](https://github.com/hiramekun/SML/blob/master/bayesian/variational_method.ipynb)  
+ <img src="https://i.imgur.com/n6X4xsQ.png" width=30%> <img src="https://i.imgur.com/wS75dc9.png" width=30%>
  
 ## 機械学習
  - [手書き文字の線形判別](https://github.com/hiramekun/SML/blob/master/machine_learning/linear_digit.ipynb)
@@ -48,11 +45,8 @@ R/Pythonを用いた統計/機械学習のプログラムをまとめる．
 
 ## 回帰分析
  - [線形回帰](https://github.com/hiramekun/SML/blob/master/regression/linear_regression.ipynb)
- - [リッジ回帰](https://github.com/hiramekun/SML/blob/master/regression/rigde_regression.ipynb)  
-  <img src="https://i.imgur.com/I6PE0rw.png" width=50%>
-  
- - [多項式回帰と交差検証の実施](https://github.com/hiramekun/SML/blob/master/regression/cross_validation.ipynb)  
-  <img src="https://i.imgur.com/UZnDuPv.png" width=50%>
+ - [リッジ回帰](https://github.com/hiramekun/SML/blob/master/regression/rigde_regression.ipynb),[多項式回帰と交差検証の実施](https://github.com/hiramekun/SML/blob/master/regression/cross_validation.ipynb)  
+  <img src="https://i.imgur.com/I6PE0rw.png" width=45%>  <img src="https://i.imgur.com/UZnDuPv.png" width=45%>
  
 ## 最適化
  - [バックトラック法](https://github.com/hiramekun/SML/blob/master/optimization/backtracking.ipynb), [障壁法](https://github.com/hiramekun/SML/blob/master/optimization/barrier_method.ipynb), [罰則法](https://github.com/hiramekun/SML/blob/master/optimization/penalty_method.ipynb)  
