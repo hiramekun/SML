@@ -55,11 +55,5 @@ R/Pythonを用いた統計/機械学習のプログラムをまとめる．
   <img src="https://i.imgur.com/UZnDuPv.png" width=50%>
  
 ## 最適化
- - [バックトラック法](https://github.com/hiramekun/SML/blob/master/optimization/backtracking.ipynb)  
-  <img src="https://i.imgur.com/gTWie4O.png" width=30%>
-  
- - [障壁法](https://github.com/hiramekun/SML/blob/master/optimization/barrier_method.ipynb)  
-  <img src="https://i.imgur.com/0UJFot6.png" width=30%>
-  
- - [罰則法](https://github.com/hiramekun/SML/blob/master/optimization/penalty_method.ipynb)  
-  <img src="https://i.imgur.com/ai3hGCO.png" width=30%>
+ - [バックトラック法](https://github.com/hiramekun/SML/blob/master/optimization/backtracking.ipynb), [障壁法](https://github.com/hiramekun/SML/blob/master/optimization/barrier_method.ipynb), [罰則法](https://github.com/hiramekun/SML/blob/master/optimization/penalty_method.ipynb)  
+  <img src="https://i.imgur.com/gTWie4O.png" width=30%> <img src="https://i.imgur.com/0UJFot6.png" width=30%> <img src="https://i.imgur.com/ai3hGCO.png" width=30%>
