@@ -1,5 +1,5 @@
 # SML
-Statistical machine learning programs using R/Python.  
+Statistical machine learning programs using R/Python which I learned in the lectures.  
 Only displays representative ones.
 
 ## Contents
