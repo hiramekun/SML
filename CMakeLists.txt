@@ -6,3 +6,4 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DMY_DEBUG")
 
 add_executable(metropolis MCMC/metropolis.cpp)
 add_executable(metropolis2 MCMC/metropolis2.cpp)
+add_executable(gaussian_hmc MCMC/gaussian_hmc.cpp)
