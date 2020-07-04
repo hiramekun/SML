@@ -48,7 +48,7 @@ int Molecular_Dynamics(double &x, double &ham_init, double &ham_fin) {
     ham_init = calc_hamiltonian(x, p);
 
     x = x + p * 0.5e0 * dtau; // 1ステップ目
-    for (int step = 1; step <= ntau; step++) {
+    for (int step = 1; step < ntau; step++) {
         double delh = calc_delh(x);
         p -= delh * dtau;
         x += p * dtau;
@@ -70,7 +70,7 @@ int main() {
     int naccept = 0;
     double sum_xx = 0e0;
 
-    for (int iter = 0; iter <= niter; iter++) {
+    for (int iter = 0; iter < niter; iter++) {
         double backup_x = x;
         double ham_init, ham_fin;
         Molecular_Dynamics(x, ham_init, ham_fin);
